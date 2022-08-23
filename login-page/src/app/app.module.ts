@@ -14,6 +14,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { HeaderComponent } from './components/header/header.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { HeaderComponent } from './components/header/header.component';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    MatIconModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
