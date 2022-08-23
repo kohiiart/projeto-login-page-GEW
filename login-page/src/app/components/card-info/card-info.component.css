@@ -1,0 +1,5 @@
+.card{
+    margin-top: 10rem;
+    background-color: var(--color-tertiary);
+    width: 60%;
+}

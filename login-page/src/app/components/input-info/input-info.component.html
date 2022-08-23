@@ -1,1 +1,44 @@
-<p>input-info works!</p>
+<form class="login-form">
+    <div class="inputs">
+        <mat-form-field class="name-input input" appearance="fill" >
+          <mat-label >Nome Completo</mat-label>
+          <input matInput placeholder="Ex. Fernando" autocomplete="off" >
+        </mat-form-field>
+    
+        <mat-form-field class="email-input input" appearance="fill" type="email">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Ex. name@example.com" type="email" autocomplete="off">
+          </mat-form-field>
+    
+          <mat-form-field class="password-input input" appearance="fill" >
+            <mat-label>Senha</mat-label>
+            <input matInput type="password">
+          </mat-form-field>
+    
+          <mat-form-field class="phone-input input" appearance="fill" >
+            <mat-label>Telefone</mat-label>
+            <input matInput placeholder="Ex. 9999-9999" type="tel" autocomplete="off">
+          </mat-form-field>
+    
+          <mat-form-field class="cpf-input input" appearance="fill" >
+            <mat-label>CPF</mat-label>
+            <input matInput type="tel" autocomplete="off">
+          </mat-form-field>
+          <br>
+          <mat-radio-group aria-label="Nível de Acesso" fxLayout="row" fxLayoutAlign="space-between none">
+            <mat-label class="level-label">Nível de Acesso</mat-label>
+            <div class="radios" >                
+                <mat-radio-button class="level-radio" value="1">Nível 1</mat-radio-button>
+                <mat-radio-button class="level-radio" value="2">Nível 2</mat-radio-button>
+                <mat-radio-button class="level-radio" value="3">Nível 3</mat-radio-button>
+                <mat-radio-button class="level-radio" value="4">Nível 4</mat-radio-button>
+                <mat-radio-button class="level-radio" value="5">Nível 5</mat-radio-button>
+            </div>
+            </mat-radio-group>
+    </div>
+
+    <mat-card-actions>
+        <button mat-stroked-button type="submit" class="submit-btn">Concluir</button>
+    </mat-card-actions>
+  </form>
+  

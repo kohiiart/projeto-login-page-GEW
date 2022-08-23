@@ -7,16 +7,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputInfoComponent } from './components/input-info/input-info.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatSliderModule } from '@angular/material/slider';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CardInfoComponent } from './components/card-info/card-info.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatRadioModule} from '@angular/material/radio';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputInfoComponent,
-    CardInfoComponent
+    CardInfoComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -24,9 +28,11 @@ import { CardInfoComponent } from './components/card-info/card-info.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatMenuModule,
-    MatSidenavModule,
-    MatSliderModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatCardModule,
+    MatButtonModule,
+    MatInputModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
