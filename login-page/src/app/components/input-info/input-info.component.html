@@ -1,41 +1,43 @@
-<form class="login-form">
-    <div class="inputs">
-        <mat-form-field class="name-input input" appearance="fill" >
+<form class="login-form" [formGroup]="profileForm">
+  
+    <div class="inputs" fxLayout="row wrap" fxLayoutGap="5px">
+        <mat-form-field class="name-input input" appearance="fill" fxFlex="50">
           <mat-label >Nome Completo</mat-label>
-          <input matInput placeholder="Ex. Fernando" autocomplete="off" >
+          <input matInput placeholder="Ex. Fernando" autocomplete="off" formControlName="name">
         </mat-form-field>
     
-        <mat-form-field class="email-input input" appearance="fill" type="email">
+        <mat-form-field class="email-input input" appearance="fill" type="email" fxFlex="">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Ex. name@example.com" type="email" autocomplete="off">
+            <input matInput placeholder="Ex. name@example.com" type="email" autocomplete="off" formControlName="email">
           </mat-form-field>
     
-          <mat-form-field class="password-input input" appearance="fill" >
+          <mat-form-field class="password-input input" appearance="fill" fxFlex="">
             <mat-label>Senha</mat-label>
-            <input matInput type="password">
+            <input matInput type="password" formControlName="password">
           </mat-form-field>
     
-          <mat-form-field class="phone-input input" appearance="fill" >
+          <mat-form-field class="phone-input input" appearance="fill" fxFlex="33">
             <mat-label>Telefone</mat-label>
-            <input matInput placeholder="Ex. 9999-9999" type="tel" autocomplete="off">
+            <input matInput placeholder="Ex. 9999-9999" type="tel" autocomplete="off" formControlName="tel">
           </mat-form-field>
     
-          <mat-form-field class="cpf-input input" appearance="fill" >
+          <mat-form-field class="cpf-input input" appearance="fill" fxFlex="33">
             <mat-label>CPF</mat-label>
-            <input matInput type="tel" autocomplete="off">
+            <input matInput type="tel" autocomplete="off" formControlName="cpf">
           </mat-form-field>
           <br>
-          <mat-radio-group aria-label="Nível de Acesso" fxLayout="row">
+          <mat-radio-group aria-label="Nível de Acesso" fxLayout="row" formControlName="radiobox" fxFlex="" fxLayoutAlign="space-around center">
             <mat-label class="level-label">Nível de Acesso</mat-label>
             <div class="radios">                
-                <mat-radio-button class="level-radio" value="1">Nível 1</mat-radio-button>
-                <mat-radio-button class="level-radio" value="2">Nível 2</mat-radio-button>
-                <mat-radio-button class="level-radio" value="3">Nível 3</mat-radio-button>
-                <mat-radio-button class="level-radio" value="4">Nível 4</mat-radio-button>
-                <mat-radio-button class="level-radio" value="5">Nível 5</mat-radio-button>
+                <mat-radio-button class="level-radio" value="1">Nvl 1</mat-radio-button>
+                <mat-radio-button class="level-radio" value="2">Nvl 2</mat-radio-button>
+                <mat-radio-button class="level-radio" value="3">Nvl 3</mat-radio-button>
+                <mat-radio-button class="level-radio" value="4">Nvl 4</mat-radio-button>
+                <mat-radio-button class="level-radio" value="5">Nvl 5</mat-radio-button>
             </div>
             </mat-radio-group>
-            <mat-form-field class="active-input input" appearance="fill" >
+            <br>
+            <mat-form-field class="active-input input" appearance="fill" fxFlex="33.7">
               <mat-label>Ativo</mat-label>
               <select matNativeControl required>
                 <option value="sim">Sim</option>
@@ -45,7 +47,7 @@
     </div>
 
     <mat-card-actions>
-        <button mat-stroked-button type="submit" class="submit-btn"><mat-icon>done</mat-icon></button>
+        <button (click)="send()" mat-stroked-button type="submit" class="submit-btn"><mat-icon>done</mat-icon></button>
     </mat-card-actions>
   </form>
   

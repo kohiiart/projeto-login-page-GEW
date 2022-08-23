@@ -1,13 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-input-info',
@@ -15,14 +7,28 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./input-info.component.css']
 })
 export class InputInfoComponent implements OnInit {
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  profileForm = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl(''),
+    password: new FormControl(''),
+    tel: new FormControl(''),
+    cpf: new FormControl(''),
+    radiobox: new FormControl(''),
 
-  matcher = new MyErrorStateMatcher();
-
-
-  constructor() { }
+  });
+  constructor() { 
+    this.profileForm.value.name;
+    this.profileForm.value.email;
+    this.profileForm.value.password;
+    this.profileForm.value.tel;
+    this.profileForm.value.cpf;
+    this.profileForm.value.radiobox;
+  }
 
   ngOnInit(): void {
   }
-
+  send(){
+    //event.preventDefault();
+    console.log(this.profileForm.value.radiobox)
+  }
 }

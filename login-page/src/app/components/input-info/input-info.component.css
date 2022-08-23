@@ -1,24 +1,14 @@
 .input{
-    margin-right: 0.5rem;
     color: var(--color-primary);
-    width:31%;
 }
 mat-card-actions{
     color: var(--color-primary);
 }
 .login-form{
-    width: 100%;
     padding: 0.1rem;
 }
-.level-label{
-    margin-right: 1rem;
-}
 .level-radio{
-    margin-inline: 0.3rem;
-    margin-bottom: 1rem;  
-}
-.name-input, .email-input{
-    width: 47%;
+    margin-right: 0.5rem;
 }
 .submit-btn{
     width: 100%;
