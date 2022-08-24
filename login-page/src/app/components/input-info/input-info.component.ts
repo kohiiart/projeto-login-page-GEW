@@ -18,6 +18,7 @@ export class InputInfoComponent implements OnInit {
       tel: ['', Validators.required],
       cpf: ['', Validators.required],
       password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
       radiobox: ['', Validators.required],
       ativo: ['', Validators.required]
 
