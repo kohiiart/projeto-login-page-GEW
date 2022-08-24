@@ -4,30 +4,44 @@
         <mat-form-field class="name-input input" required appearance="fill" fxFlex.xs fxFlex.gt-xs fxFlex.gt-sm="50">
           <mat-label >Nome Completo</mat-label>
           <input matInput placeholder="Ex. Fernando" autocomplete="off" formControlName="name">
+          <mat-error class="text-danger" *ngIf="(profileFormControl.name.touched || submitted) && profileFormControl.name.errors?.required">
+            Nome é <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
     
         <mat-form-field class="email-input input" required appearance="fill" type="email" fxFlex>
             <mat-label>Email</mat-label>
             <input matInput placeholder="Ex. name@example.com" type="email" autocomplete="off" formControlName="email">
-            <span class="text-danger"
-                                *ngIf="(profileFormControl.name.touched || submitted) && profileFormControl.name.errors?.required">
-                                Name is required
-                            </span>
+            <mat-error class="text-danger" *ngIf="(profileFormControl.email.touched || submitted) && profileFormControl.email.errors?.required">
+              Email é <strong>obrigatório</strong>
+            </mat-error>
+            <mat-error class="text-danger" *ngIf="(profileFormControl.email.touched || submitted) && profileFormControl.email.errors?.email">
+              Insira um email <strong>válido</strong>
+            </mat-error>
           </mat-form-field>
     
           <mat-form-field class="password-input input" required appearance="fill" fxFlex>
             <mat-label>Senha</mat-label>
             <input matInput type="password" formControlName="password">
+            <mat-error class="text-danger" *ngIf="(profileFormControl.password.touched || submitted) && profileFormControl.password.errors?.required">
+              Insira uma <strong>senha</strong>
+            </mat-error>
           </mat-form-field>
     
           <mat-form-field class="phone-input input" required appearance="fill" fxFlex="33" fxFlex.xs fxFlex.gt-xs>
             <mat-label>Telefone</mat-label>
             <input matInput placeholder="Ex. 9999-9999" type="tel" autocomplete="off" formControlName="tel">
+            <mat-error class="text-danger" *ngIf="(profileFormControl.tel.touched || submitted) && profileFormControl.tel.errors?.required">
+              Insira um <strong>telefone</strong>
+            </mat-error>
           </mat-form-field>
     
           <mat-form-field class="cpf-input input" required appearance="fill" fxFlex= fxFlex.xs fxFlex.gt-xs>
             <mat-label>CPF</mat-label>
             <input matInput type="tel" autocomplete="off" formControlName="cpf">
+            <mat-error class="text-danger" *ngIf="(profileFormControl.cpf.touched || submitted) && profileFormControl.cpf.errors?.required">
+              CPF é <strong>obrigatório</strong>
+            </mat-error>
           </mat-form-field>
           <br>
           <mat-radio-group class="acess-level" aria-label="Nível de Acesso" fxLayout="row" formControlName="radiobox" fxFlex fxLayoutAlign="space-around center" fxFlex.xs fxFlex.gt-xs="66" fxFlex.gt-sm="66">
@@ -38,6 +52,9 @@
                 <mat-radio-button class="level-radio" value="3">Nvl 3</mat-radio-button>
                 <mat-radio-button class="level-radio" value="4">Nvl 4</mat-radio-button>
                 <mat-radio-button class="level-radio" value="5">Nvl 5</mat-radio-button>
+                <mat-error class="text-danger" *ngIf="(profileFormControl.radiobox.touched || submitted) && profileFormControl.radiobox.errors?.required">
+                  Selecione o <strong>Nível de Acesso</strong>
+                </mat-error>
             </div>
             </mat-radio-group>
             <br>

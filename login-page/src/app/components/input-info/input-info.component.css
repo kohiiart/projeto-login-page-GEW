@@ -1,5 +1,6 @@
 .input{
     color: var(--color-primary);
+    margin-bottom: 0.5rem;
 }
 mat-card-actions{
     color: var(--color-primary);
@@ -17,4 +18,7 @@ mat-card-actions{
     width: 100%;
     margin-top: 1rem;
     color: var(--pink-color);
+}
+.text-danger{
+    margin-bottom: 1rem;
 }

@@ -14,7 +14,7 @@ export class InputInfoComponent implements OnInit {
   constructor( private fb: FormBuilder) {
     this.profileForm = this.fb.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       tel: ['', Validators.required],
       cpf: ['', Validators.required],
       password: ['', Validators.required],
