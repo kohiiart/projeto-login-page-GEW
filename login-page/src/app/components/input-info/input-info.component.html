@@ -1,33 +1,33 @@
 <form class="login-form" [formGroup]="profileForm">
   
     <div class="inputs" fxLayout="row wrap" fxLayoutGap="5px">
-        <mat-form-field class="name-input input" appearance="fill" fxFlex="50">
+        <mat-form-field class="name-input input" required appearance="fill" fxFlex.xs fxFlex.gt-xs fxFlex.gt-sm="50">
           <mat-label >Nome Completo</mat-label>
           <input matInput placeholder="Ex. Fernando" autocomplete="off" formControlName="name">
         </mat-form-field>
     
-        <mat-form-field class="email-input input" appearance="fill" type="email" fxFlex="">
+        <mat-form-field class="email-input input" required appearance="fill" type="email" fxFlex>
             <mat-label>Email</mat-label>
             <input matInput placeholder="Ex. name@example.com" type="email" autocomplete="off" formControlName="email">
           </mat-form-field>
     
-          <mat-form-field class="password-input input" appearance="fill" fxFlex="">
+          <mat-form-field class="password-input input" required appearance="fill" fxFlex>
             <mat-label>Senha</mat-label>
             <input matInput type="password" formControlName="password">
           </mat-form-field>
     
-          <mat-form-field class="phone-input input" appearance="fill" fxFlex="33">
+          <mat-form-field class="phone-input input" required appearance="fill" fxFlex="33" fxFlex.xs fxFlex.gt-xs>
             <mat-label>Telefone</mat-label>
             <input matInput placeholder="Ex. 9999-9999" type="tel" autocomplete="off" formControlName="tel">
           </mat-form-field>
     
-          <mat-form-field class="cpf-input input" appearance="fill" fxFlex="33">
+          <mat-form-field class="cpf-input input" required appearance="fill" fxFlex= fxFlex.xs fxFlex.gt-xs>
             <mat-label>CPF</mat-label>
             <input matInput type="tel" autocomplete="off" formControlName="cpf">
           </mat-form-field>
           <br>
-          <mat-radio-group aria-label="Nível de Acesso" fxLayout="row" formControlName="radiobox" fxFlex="" fxLayoutAlign="space-around center">
-            <mat-label class="level-label">Nível de Acesso</mat-label>
+          <mat-radio-group class="acess-level" aria-label="Nível de Acesso" fxLayout="row" formControlName="radiobox" fxFlex fxLayoutAlign="space-around center" fxFlex.xs fxFlex.gt-xs="66" fxFlex.gt-sm="66">
+            <mat-label class="level-label" >Nível de Acesso</mat-label>
             <div class="radios">                
                 <mat-radio-button class="level-radio" value="1">Nvl 1</mat-radio-button>
                 <mat-radio-button class="level-radio" value="2">Nvl 2</mat-radio-button>
@@ -37,9 +37,9 @@
             </div>
             </mat-radio-group>
             <br>
-            <mat-form-field class="active-input input" appearance="fill" fxFlex="33.7">
+            <mat-form-field class="active-input input" appearance="fill" fxFlex fxFlex.xs fxFlex.gt-xs>
               <mat-label>Ativo</mat-label>
-              <select matNativeControl required>
+              <select matNativeControl required formControlName="ativo">
                 <option value="sim">Sim</option>
                 <option value="nao">Não</option>
               </select>

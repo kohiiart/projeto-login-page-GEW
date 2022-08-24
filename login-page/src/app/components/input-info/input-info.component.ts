@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
+import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-input-info',
@@ -8,13 +8,13 @@ import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 })
 export class InputInfoComponent implements OnInit {
   profileForm = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-    tel: new FormControl(''),
-    cpf: new FormControl(''),
-    radiobox: new FormControl(''),
-
+    name: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+    tel: new FormControl('', Validators.required),
+    cpf: new FormControl('', Validators.required),
+    radiobox: new FormControl('', Validators.required),
+    ativo: new FormControl('', Validators.required),
   });
   constructor() { 
     this.profileForm.value.name;
@@ -23,12 +23,13 @@ export class InputInfoComponent implements OnInit {
     this.profileForm.value.tel;
     this.profileForm.value.cpf;
     this.profileForm.value.radiobox;
+    this.profileForm.value.ativo;
   }
 
   ngOnInit(): void {
   }
   send(){
     //event.preventDefault();
-    console.log(this.profileForm.value.radiobox)
+    console.log(this.profileForm.value.name)
   }
 }

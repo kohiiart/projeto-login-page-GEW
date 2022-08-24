@@ -10,6 +10,9 @@ mat-card-actions{
 .level-radio{
     margin-right: 0.5rem;
 }
+.acess-level{
+    margin-bottom: 1rem;
+}
 .submit-btn{
     width: 100%;
     margin-top: 1rem;
