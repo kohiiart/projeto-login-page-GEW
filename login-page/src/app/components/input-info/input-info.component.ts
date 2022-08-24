@@ -6,30 +6,37 @@ import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
   templateUrl: './input-info.component.html',
   styleUrls: ['./input-info.component.css']
 })
+  
 export class InputInfoComponent implements OnInit {
-  profileForm = new FormGroup({
-    name: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    tel: new FormControl('', Validators.required),
-    cpf: new FormControl('', Validators.required),
-    radiobox: new FormControl('', Validators.required),
-    ativo: new FormControl('', Validators.required),
-  });
-  constructor() { 
-    this.profileForm.value.name;
-    this.profileForm.value.email;
-    this.profileForm.value.password;
-    this.profileForm.value.tel;
-    this.profileForm.value.cpf;
-    this.profileForm.value.radiobox;
-    this.profileForm.value.ativo;
+  profileForm : FormGroup;
+  submitted = false;
+
+  constructor( private fb: FormBuilder) {
+    this.profileForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      tel: ['', Validators.required],
+      cpf: ['', Validators.required],
+      password: ['', Validators.required],
+      radiobox: ['', Validators.required],
+      ativo: ['', Validators.required]
+
+  })
   }
 
   ngOnInit(): void {
+    
   }
-  send(){
-    //event.preventDefault();
-    console.log(this.profileForm.value.name)
+
+  get profileFormControl():any{
+    return this.profileForm?.controls;
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    if (this.profileForm.valid) {
+      alert('Cadastro realizado com sucesso!\n olhe os valores no console.');
+      console.table(this.profileForm.value);
+    }
   }
 }
