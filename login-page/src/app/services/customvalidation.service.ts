@@ -7,16 +7,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class CustomvalidationService {
 
-  patternValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } => {
-      if (!control.value) {
-        return null;
-      }
-      const regex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
-      const valid = regex.test(control.value);
-      return valid ? null : { invalidPassword: true };
-    };
-  }
+
 
   MatchPassword(password: string, confirmPassword: string) {
     return (formGroup: FormGroup) => {
@@ -24,11 +15,12 @@ export class CustomvalidationService {
       const confirmPasswordControl = formGroup.controls[confirmPassword];
 
       if (!passwordControl || !confirmPasswordControl) {
-        return null;
+        return confirmPasswordControl.setErrors({ passwordMismatch: true });
       }
 
       if (confirmPasswordControl.errors && !confirmPasswordControl.errors['passwordMismatch']) {
-        return null;
+        return confirmPasswordControl.setErrors({ passwordMismatch: true });
+        ;
       }
 
       if (passwordControl.value !== confirmPasswordControl.value) {
