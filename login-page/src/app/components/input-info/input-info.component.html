@@ -3,7 +3,7 @@
     <div class="inputs" fxLayout="row wrap" fxLayoutGap="5px">
         <mat-form-field class="name-input input" required appearance="fill" fxFlex.xs fxFlex.gt-xs fxFlex.gt-sm="50">
           <mat-label >Nome Completo</mat-label>
-          <input matInput placeholder="Ex. Fernando" autocomplete="off" formControlName="name">
+          <input matInput placeholder="Ex. Fernando." autocomplete="off" formControlName="name">
           <mat-error class="text-danger" *ngIf="(profileFormControl.name.touched || submitted) && profileFormControl.name.errors?.required">
             Nome é <strong>obrigatório</strong>
           </mat-error>
@@ -22,7 +22,7 @@
     
           <mat-form-field class="password-input input" required appearance="fill" fxFlex>
             <mat-label>Senha</mat-label>
-            <input matInput type="password" formControlName="password">
+            <input matInput placeholder="Utilize uma senha forte." type="password" formControlName="password">
             <mat-error class="text-danger" *ngIf="(profileFormControl.password.touched || submitted) && profileFormControl.password.errors?.required">
               Insira uma <strong>senha</strong>
             </mat-error>
@@ -31,7 +31,12 @@
           <mat-form-field class="confirm-password-input input" required appearance="fill" fxFlex>
             <mat-label>Confirme a Senha</mat-label>
             <input matInput type="password" formControlName="confirmPassword">
-           
+            <mat-error class="text-danger" *ngIf="(profileFormControl.confirmPassword.touched || submitted) && profileFormControl.confirmPassword.errors?.required">
+              Confirme sua <strong>senha</strong>
+            </mat-error>
+            <mat-error class="text-danger" *ngIf="(profileFormControl.confirmPassword.touched || profileFormControl.confirmPassword.errors?.passwordMismatch)">
+              As senhas <strong>não coincidem</strong>
+            </mat-error>
           </mat-form-field>
     
           <mat-form-field class="phone-input input" required appearance="fill" fxFlex="33" fxFlex.xs fxFlex.gt-xs>
@@ -44,7 +49,7 @@
     
           <mat-form-field class="cpf-input input" required appearance="fill" fxFlex= fxFlex.xs fxFlex.gt-xs>
             <mat-label>CPF</mat-label>
-            <input matInput type="tel" autocomplete="off" formControlName="cpf">
+            <input matInput placeholder="Ex: ***.***.***-**" type="tel" autocomplete="off" formControlName="cpf">
             <mat-error class="text-danger" *ngIf="(profileFormControl.cpf.touched || submitted) && profileFormControl.cpf.errors?.required">
               CPF é <strong>obrigatório</strong>
             </mat-error>

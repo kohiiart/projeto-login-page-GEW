@@ -19,7 +19,7 @@ export class InputInfoComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       tel: ['', Validators.required],
       cpf: ['', Validators.required],
-      password: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
       radiobox: ['', Validators.required],
       ativo: ['', Validators.required]
@@ -43,7 +43,7 @@ export class InputInfoComponent implements OnInit {
     this.submitted = true;
     if (this.profileForm.valid) {
       alert('Cadastro realizado com sucesso!\n olhe os valores no console.');
-      console.table(this.profileForm.value);
+      console.table(this.profileForm.getRawValue());
     }
   }
 }
