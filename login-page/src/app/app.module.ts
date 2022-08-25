@@ -18,13 +18,15 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormDebugComponent } from './components/form-debug/form-debug.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputInfoComponent,
     CardInfoComponent,
-    HeaderComponent
+    HeaderComponent,
+    FormDebugComponent
   ],
   imports: [
     BrowserModule,
