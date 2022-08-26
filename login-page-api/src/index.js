@@ -1,26 +1,26 @@
+require('../config/connection')
 const express = require('express');
-const mysql = require('mysql');
-const bodyParser = require('body-parser');
+
 const app = express();
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const routes = require('./routes');
 
-const PORT = 3000;
+const port = (process.env.port || 3000)
+app.set('port', port);
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
-const db=mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'loginuser'
-})
+app.use(cors({
+    credentials: true,
+    origin: true
+}));
 
-db.connect((e)=>{
-    if(e){
-        throw e;
-    }
-    console.log('Conexão realizada')
-})
+app.options('*', cors());
 
-app.listen(PORT, () =>{
-    console.log(`Listening on port ${PORT}`);
+app.use(express.json());
+app.use(routes);
+
+app.listen(port, () =>{
+    console.log(`Listening on port ${port}`);
 } )
