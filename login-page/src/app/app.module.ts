@@ -18,8 +18,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormDebugComponent } from './components/form-debug/form-debug.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ListUsersComponent } from './components/list-users/list-users.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     InputInfoComponent,
     CardInfoComponent,
     HeaderComponent,
-    FormDebugComponent
+    ListUsersComponent
   ],
   imports: [
     BrowserModule,

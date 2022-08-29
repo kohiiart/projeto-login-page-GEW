@@ -16,6 +16,10 @@ export class UserApiService {
   addUsers(user: User) {
     return this.http.post(this.url, user)
   }
+
+  editUsers(id: string, user: User) {
+    return this.http.put(this.url+'/'+id, user)
+  }
 }
 
 export interface User{
@@ -26,5 +30,5 @@ export interface User{
   tel?: string;
   cpf?: string;
   acess?: string;
-  active?: boolean;
+  active?: string;
 }

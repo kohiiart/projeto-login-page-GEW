@@ -10,7 +10,7 @@ routes.get('/', (req, res) => {
     })
 })
 
-routes.post('/add', (req, res)=>{
+routes.post('/', (req, res)=>{
     const data = {
         name: req.body.name, email: req.body.email, password: req.body.password, 
         tel: req.body.tel, cpf: req.body.cpf, acess: req.body.acess, active: req.body.active
@@ -23,20 +23,18 @@ routes.post('/add', (req, res)=>{
     }) 
 })
 
-/* routes.put('/:id', (req, res)=>{
-    const id = req.params.id
-    const data ={
-        name: req.body.name, email: req.body.email, password: req.body.password, 
-        tel: req.body.tel, cpf: req.body.cpf, acess: req.body.acess, active: req.body.active
-    };
-    connection.query(`UPDATE userdata SET? name = ${data.name}, email = ${data.email},
-    password = ${data.password}, tel = ${data.tel}, cpf = ${data.cpf}, acess = ${data.acess}
-    WHERE id = ${id}`, (e, rows, fields)=>{
+ routes.put('/:id', (req, res)=>{
+    const {id} = req.params
+    const {name, email, password, tel, cpf, acess, active} = req.body
+
+    connection.query(`UPDATE userdata SET name ='${name}', email ='${email}',
+    password = '${password}', tel = '${tel}', cpf = '${cpf}', acess = '${acess}', 
+    active = '${active}' WHERE id = '${id}'`, (e, rows, fields)=>{
         if(!e)
         res.send(rows);
         else
         console.log(e);
     }) 
-}) */
+}) 
 
 module.exports = routes;
