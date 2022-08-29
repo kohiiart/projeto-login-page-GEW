@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { CustomvalidationService } from 'src/app/services/customvalidation.service';
+import { UserApiService } from 'src/app/services/user-api.service';
 
 @Component({
   selector: 'app-input-info',
@@ -12,8 +13,7 @@ export class InputInfoComponent implements OnInit {
   profileForm : FormGroup;
   submitted = false;
   
-
-  constructor( private fb: FormBuilder, private customValidator : CustomvalidationService) {
+  constructor( private fb: FormBuilder, private customValidator : CustomvalidationService, private userApiService: UserApiService) {
     this.profileForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -32,7 +32,16 @@ export class InputInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.listUsers();
+  }
+
+  listUsers() {
+    this.userApiService.getUsers().subscribe(
+      (res: any)=> {
+        console.log(res);
+      },
+      (err: any) => console.log(err)
+      )
   }
 
   get profileFormControl():any{
@@ -46,4 +55,5 @@ export class InputInfoComponent implements OnInit {
       console.table(this.profileForm.getRawValue());
     }
   }
+
 }
