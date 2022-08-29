@@ -75,6 +75,9 @@
                 <option value="sim">Sim</option>
                 <option value="não">Não</option>
               </select>
+              <mat-error class="text-danger" *ngIf="(profileFormControl.ativo.touched || submitted) && profileFormControl.ativo.errors?.required">
+                Selecione o <strong>Status</strong>
+              </mat-error>
             </mat-form-field>
     </div>
 
