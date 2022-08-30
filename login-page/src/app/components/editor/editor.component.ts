@@ -2,17 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { CustomvalidationService } from 'src/app/services/customvalidation.service';
 import { UserApiService, User } from 'src/app/services/user-api.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-input-info',
-  templateUrl: './input-info.component.html',
-  styleUrls: ['./input-info.component.css']
+  selector: 'app-editor',
+  templateUrl: './editor.component.html',
+  styleUrls: ['./editor.component.css']
 })
-  
-export class InputInfoComponent implements OnInit {
-  profileForm : FormGroup;
+
+export class EditorComponent implements OnInit {
+  editForm : FormGroup;
   submitted = false;
-  addUser: User ={
+
+  id: string='';
+  newUser: User ={
     id:'',
     name:'',
     email:'',
@@ -24,8 +27,9 @@ export class InputInfoComponent implements OnInit {
   };
   
   constructor( private fb: FormBuilder, private customValidator : CustomvalidationService, 
-    private UserApiService : UserApiService) {
-    this.profileForm = this.fb.group({
+    private UserApiService : UserApiService, private activateRoute : ActivatedRoute,
+    private router: Router) {
+    this.editForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       tel: ['', Validators.required],
@@ -43,24 +47,25 @@ export class InputInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.id= this.activateRoute.snapshot.params['id'];
+    console.log(this.id);
   }
 
-  get profileFormControl():any{
-    return this.profileForm?.controls;
+  get editFormControl():any{
+    return this.editForm?.controls;
   }
 
-  loginUser(){
-    delete this.addUser.id,
+  editUser(){
+    delete this.newUser.id,
 
-    this.UserApiService.addUsers(this.addUser).subscribe()
+    this.UserApiService.editUsers('1',this.newUser).subscribe()
   }
 
   onSubmit() {
     this.submitted = true;
-    if (this.profileForm.valid) {
-      alert('Cadastro realizado com sucesso!');
-      console.table(this.profileForm.getRawValue());
-      this.loginUser()
+    if (this.editForm.valid) {
+      alert('Dados atualizados com sucesso!');
+      this.editUser()
     }
   }
 

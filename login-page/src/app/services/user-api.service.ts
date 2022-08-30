@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserApiService {
-  url: string = 'http://localhost:3000/';
+  url: string = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { } 
 
@@ -14,11 +14,11 @@ export class UserApiService {
   }
 
   addUsers(user: User) {
-    return this.http.post(this.url, user)
+    return this.http.post(this.url+'/new', user)
   }
 
   editUsers(id: string, user: User) {
-    return this.http.put(this.url+'/'+id, user)
+    return this.http.put(this.url+'/edit'+id, user)
   }
 }
 

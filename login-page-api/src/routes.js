@@ -10,7 +10,7 @@ routes.get('/', (req, res) => {
     })
 })
 
-routes.post('/', (req, res)=>{
+routes.post('/new', (req, res)=>{
     const data = {
         name: req.body.name, email: req.body.email, password: req.body.password, 
         tel: req.body.tel, cpf: req.body.cpf, acess: req.body.acess, active: req.body.active
@@ -23,7 +23,7 @@ routes.post('/', (req, res)=>{
     }) 
 })
 
- routes.put('/:id', (req, res)=>{
+ routes.put('/edit:id', (req, res)=>{
     const {id} = req.params
     const {name, email, password, tel, cpf, acess, active} = req.body
 
