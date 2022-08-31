@@ -13,6 +13,10 @@ export class UserApiService {
     return this.http.get(this.url)
   }
 
+  getUsersById(id: string) {
+    return this.http.get(this.url+'/'+id)
+  }
+
   addUsers(user: User) {
     return this.http.post(this.url+'/new', user)
   }

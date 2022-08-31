@@ -9,7 +9,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ListUsersComponent implements OnInit {
   usersLister: User[]
-
+  snapshot: any;
+  
+  userInfo: string[] = ['id','name', 'email', 'password', 'cpf', 'tel', 'acess', 'active', 'btn'];
+  
   constructor( private userApiService: UserApiService, private router: Router,
     private activatedRoute: ActivatedRoute) {
     this.usersLister = [];
@@ -17,15 +20,22 @@ export class ListUsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.listUsers();
-    const idEntrada= <string>this.activatedRoute.snapshot.params['id'];
-    console.log(idEntrada);
+    this.getUser("");
   }
 
   listUsers() {
     this.userApiService.getUsers().subscribe(
       (res: any)=> {
         this.usersLister = <any>res;
+      },
+      (err: any) => console.log(err)
+      )
+  }
 
+  getUser(id: any) {
+    this.userApiService.getUsersById(id).subscribe(
+      (res: any)=> {
+        console.log('eita', id)
       },
       (err: any) => console.log(err)
       )

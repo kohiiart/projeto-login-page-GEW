@@ -25,6 +25,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { AddBtnComponent } from './components/add-btn/add-btn.component';
 import { ViewBtnComponent } from './components/view-btn/view-btn.component';
+import {MatTableModule} from '@angular/material/table';
+
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 @NgModule({
   declarations: [
@@ -37,7 +40,7 @@ import { ViewBtnComponent } from './components/view-btn/view-btn.component';
     LoginComponent,
     EditComponent,
     AddBtnComponent,
-    ViewBtnComponent
+    ViewBtnComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,9 @@ import { ViewBtnComponent } from './components/view-btn/view-btn.component';
     MatSelectModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMaskModule.forRoot(),
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

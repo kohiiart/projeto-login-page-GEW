@@ -9,6 +9,15 @@ routes.get('/', (req, res) => {
         console.log(e);
     })
 })
+routes.get('/:id', (req, res) => {
+    const {id} = req.params
+    connection.query('SELECT * FROM userdata WHERE id = ?', [id], (e, rows, fields)=>{
+        if(!e)
+        res.send(rows);
+        else
+        console.log(e);
+    })
+})
 
 routes.post('/new', (req, res)=>{
     const data = {
@@ -23,7 +32,7 @@ routes.post('/new', (req, res)=>{
     }) 
 })
 
- routes.put('/edit:id', (req, res)=>{
+ routes.put('/:id', (req, res)=>{
     const {id} = req.params
     const {name, email, password, tel, cpf, acess, active} = req.body
 

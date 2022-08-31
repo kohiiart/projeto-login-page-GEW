@@ -47,8 +47,6 @@ export class EditorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id= this.activateRoute.snapshot.params['id'];
-    console.log(this.id);
   }
 
   get editFormControl():any{
