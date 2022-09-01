@@ -3,6 +3,7 @@ import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { CustomvalidationService } from 'src/app/services/customvalidation.service';
 import { UserApiService, User } from 'src/app/services/user-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-editor',
@@ -13,8 +14,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditorComponent implements OnInit {
   editForm : FormGroup;
   submitted = false;
+  private routeSub: Subscription;
+  id: string;
 
-  id: string='';
   newUser: User ={
     id:'',
     name:'',
@@ -27,8 +29,7 @@ export class EditorComponent implements OnInit {
   };
   
   constructor( private fb: FormBuilder, private customValidator : CustomvalidationService, 
-    private UserApiService : UserApiService, private activateRoute : ActivatedRoute,
-    private router: Router) {
+    private UserApiService : UserApiService, private route : ActivatedRoute) {
     this.editForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -39,14 +40,22 @@ export class EditorComponent implements OnInit {
       radiobox: ['', Validators.required],
       ativo: ['', Validators.required]
 
+      
   },
   {
     validator: this.customValidator.MatchPassword('password', 'confirmPassword'),
   }
 )
+
+  this.routeSub = Subscription.EMPTY;
+  this.id = "";
   }
 
   ngOnInit(): void {
+    this.routeSub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+      console.log('ID DO EDIT----->',this.id);
+  });
   }
 
   get editFormControl():any{

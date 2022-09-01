@@ -1,4 +1,8 @@
 <div class="header" fxLayout="row wrap" fxLayoutAlign="start center"  >
-    <mat-icon class="header-icon" fxFlex="5">person_add</mat-icon>
-    <h1 class="title" fxFlex="5">Cadastro</h1>
+    <mat-icon class="header-icon pointer" fxFlex="5" [routerLink]="['/save']">person_add</mat-icon>
+
+    <ul class="pointer" fxLayout="row">
+        <li [routerLink]="['/users']"><mat-icon>people</mat-icon></li>
+        <li [routerLink]="['/save']"><mat-icon >person_add</mat-icon></li>
+    </ul>
 </div>

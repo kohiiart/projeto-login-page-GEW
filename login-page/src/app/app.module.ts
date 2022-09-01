@@ -22,7 +22,6 @@ import { ListUsersComponent } from './components/list-users/list-users.component
 import { EditorComponent } from './components/editor/editor.component';
 import { UsersComponent } from './pages/users/users.component';
 import { LoginComponent } from './pages/login/login.component';
-import { EditComponent } from './pages/edit/edit.component';
 import { AddBtnComponent } from './components/add-btn/add-btn.component';
 import { ViewBtnComponent } from './components/view-btn/view-btn.component';
 import {MatTableModule} from '@angular/material/table';
@@ -38,7 +37,6 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     EditorComponent,
     UsersComponent,
     LoginComponent,
-    EditComponent,
     AddBtnComponent,
     ViewBtnComponent,
   ],

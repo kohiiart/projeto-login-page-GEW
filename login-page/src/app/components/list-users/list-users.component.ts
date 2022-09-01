@@ -11,7 +11,7 @@ export class ListUsersComponent implements OnInit {
   usersLister: User[]
   snapshot: any;
   
-  userInfo: string[] = ['id','name', 'email', 'password', 'cpf', 'tel', 'acess', 'active', 'btn'];
+  userInfo: string[] = ['id','name', 'email', 'password', 'cpf', 'tel', 'acess', 'active'];
   
   constructor( private userApiService: UserApiService, private router: Router,
     private activatedRoute: ActivatedRoute) {
@@ -33,11 +33,13 @@ export class ListUsersComponent implements OnInit {
   }
 
   getUser(id: any) {
-    this.userApiService.getUsersById(id).subscribe(
-      (res: any)=> {
-        console.log('eita', id)
-      },
-      (err: any) => console.log(err)
-      )
-  }
+    if(id){
+      this.userApiService.getUsersById(id).subscribe(
+        (res: any)=> {
+          this.usersLister = <any>res;
+        },
+        (err: any) => console.log(err)
+        )
+        }
+    }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { CustomvalidationService } from 'src/app/services/customvalidation.service';
 import { UserApiService, User } from 'src/app/services/user-api.service';
+import { Subscription} from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-input-info',
@@ -10,49 +12,50 @@ import { UserApiService, User } from 'src/app/services/user-api.service';
 })
   
 export class InputInfoComponent implements OnInit {
-  profileForm : FormGroup;
+  profileForm !: FormGroup;
   submitted = false;
-  addUser: User ={
-    id:'',
-    name:'',
-    email:'',
-    password:'',
-    tel:'',
-    cpf:'',
-    acess:'',
-    active:''
-  };
+
+  private routeSub: Subscription;
+  id: string;
   
   constructor( private fb: FormBuilder, private customValidator : CustomvalidationService, 
-    private UserApiService : UserApiService) {
-    this.profileForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      tel: ['', Validators.required],
-      cpf: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-      radiobox: ['', Validators.required],
-      ativo: ['', Validators.required]
-
-  },
-  {
-    validator: this.customValidator.MatchPassword('password', 'confirmPassword'),
-  }
-)
+    private UserApiService : UserApiService, private route : ActivatedRoute) {
+    this.setMethod();  
+    this.routeSub = Subscription.EMPTY;
+    this.id = "";
   }
 
   ngOnInit(): void {
+    this.routeSub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+      console.log('ID DO EDIT----->',this.id);
+  });
   }
 
   get profileFormControl():any{
     return this.profileForm?.controls;
   }
 
-  loginUser(){
-    delete this.addUser.id,
+  setMethod(){
+    this.profileForm = this.fb.group({
+      id: [null],
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      tel: ['', Validators.required],
+      cpf: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+      acess: ['', Validators.required],
+      active: ['', Validators.required]
+    },
+    {
+      validator: this.customValidator.MatchPassword('password', 'confirmPassword'),
+    }
+  )
+  }
 
-    this.UserApiService.addUsers(this.addUser).subscribe()
+  loginUser(){
+    this.UserApiService.addUsers(this.profileForm.value).subscribe()
   }
 
   onSubmit() {
