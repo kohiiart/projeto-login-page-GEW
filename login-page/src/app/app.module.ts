@@ -25,6 +25,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AddBtnComponent } from './components/add-btn/add-btn.component';
 import { ViewBtnComponent } from './components/view-btn/view-btn.component';
 import {MatTableModule} from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask'
 
@@ -57,7 +58,8 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     MatFormFieldModule,
     HttpClientModule,
     NgxMaskModule.forRoot(),
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

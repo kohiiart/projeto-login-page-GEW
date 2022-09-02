@@ -24,6 +24,10 @@ export class UserApiService {
   editUsers(id: string, user: User) {
     return this.http.put(this.url+'/'+id, user)
   }
+
+  deleteUsers(id: string) {
+    return this.http.delete(this.url+'/'+id)
+  }
 }
 
 export interface User{

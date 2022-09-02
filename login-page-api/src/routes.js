@@ -43,7 +43,19 @@ routes.post('/new', (req, res)=>{
         res.send(rows);
         else
         console.log(e);
-    }) 
+    })  
 }) 
+
+routes.delete('/:id', (req, res)=>{
+    const {id} = req.params
+    const {name, email, password, tel, cpf, acess, active} = req.body
+
+    connection.query(`DELETE FROM userdata WHERE id = '${id}'`, (e, rows, fields)=>{
+        if(!e)
+        res.send(rows);
+        else
+        console.log(e);
+    })  
+})
 
 module.exports = routes;

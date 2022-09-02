@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { CustomvalidationService } from 'src/app/services/customvalidation.service';
 import { UserApiService, User } from 'src/app/services/user-api.service';
 import { Subscription} from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-input-info',
@@ -12,6 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 })
   
 export class InputInfoComponent implements OnInit {
+  hide = true
+ 
   profileForm !: FormGroup;
   submitted = false;
 
@@ -60,6 +63,10 @@ export class InputInfoComponent implements OnInit {
     }else{
       this.UserApiService.editUsers(this.id, this.profileForm.value).subscribe()
     }
+  }
+  
+  deleteUsers(){
+    this.UserApiService.deleteUsers(this.id).subscribe()
   }
   
   getById(){
