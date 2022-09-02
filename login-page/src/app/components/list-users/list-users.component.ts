@@ -20,7 +20,6 @@ export class ListUsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.listUsers();
-    this.getUser("");
   }
 
   listUsers() {
@@ -32,14 +31,5 @@ export class ListUsersComponent implements OnInit {
       )
   }
 
-  getUser(id: any) {
-    if(id){
-      this.userApiService.getUsersById(id).subscribe(
-        (res: any)=> {
-          this.usersLister = <any>res;
-        },
-        (err: any) => console.log(err)
-        )
-        }
-    }
+ 
 }

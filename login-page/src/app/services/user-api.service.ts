@@ -22,7 +22,7 @@ export class UserApiService {
   }
 
   editUsers(id: string, user: User) {
-    return this.http.put(this.url+'/edit'+id, user)
+    return this.http.put(this.url+'/'+id, user)
   }
 }
 

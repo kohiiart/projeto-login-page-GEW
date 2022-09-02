@@ -20,7 +20,8 @@ export class InputInfoComponent implements OnInit {
   
   constructor( private fb: FormBuilder, private customValidator : CustomvalidationService, 
     private UserApiService : UserApiService, private route : ActivatedRoute) {
-    this.setMethod();  
+    this.loadForm(null)
+    this.getById();
     this.routeSub = Subscription.EMPTY;
     this.id = "";
   }
@@ -29,24 +30,23 @@ export class InputInfoComponent implements OnInit {
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params['id'];
       console.log('ID DO EDIT----->',this.id);
-  });
+    });
   }
-
+  
   get profileFormControl():any{
     return this.profileForm?.controls;
   }
 
-  setMethod(){
+  loadForm(res: any){
     this.profileForm = this.fb.group({
-      id: [null],
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      tel: ['', Validators.required],
-      cpf: ['', Validators.required],
-      password: ['', Validators.required],
+      name: [!this.id ? '' : res[0].name, Validators.required],
+      email: [!this.id ? '' : res[0].email, [Validators.required, Validators.email]],
+      tel: [!this.id ? '' : res[0].tel, Validators.required],
+      cpf: [!this.id ? '' : res[0].cpf, Validators.required],
+      password: [!this.id ? '' : res[0].password, Validators.required],
       confirmPassword: ['', Validators.required],
-      acess: ['', Validators.required],
-      active: ['', Validators.required]
+      acess: [!this.id ? '' : res[0].acess, Validators.required],
+      active: [!this.id ? '' : res[0].active, Validators.required]
     },
     {
       validator: this.customValidator.MatchPassword('password', 'confirmPassword'),
@@ -54,16 +54,29 @@ export class InputInfoComponent implements OnInit {
   )
   }
 
-  loginUser(){
-    this.UserApiService.addUsers(this.profileForm.value).subscribe()
+  saveUser(){
+    if(!this.id){
+      this.UserApiService.addUsers(this.profileForm.value).subscribe()
+    }else{
+      this.UserApiService.editUsers(this.id, this.profileForm.value).subscribe()
+    }
+  }
+  
+  getById(){
+    this.routeSub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+      
+      this.UserApiService.getUsersById(this.id).subscribe(res => {
+        this.loadForm(res)
+      });
+    })
   }
 
   onSubmit() {
     this.submitted = true;
-    if (this.profileForm.valid) {
-      alert('Cadastro realizado com sucesso!');
-      console.table(this.profileForm.getRawValue());
-      this.loginUser()
+
+    if(this.profileForm.valid){ 
+      this.saveUser()
     }
   }
 
