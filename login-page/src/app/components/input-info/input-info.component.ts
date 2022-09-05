@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { CustomvalidationService } from 'src/app/services/customvalidation.service';
 import { UserApiService, User } from 'src/app/services/user-api.service';
 import { Subscription} from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
@@ -14,7 +14,9 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
   
 export class InputInfoComponent implements OnInit {
   hide = true
- 
+  disableSelect = new FormControl(false);
+
+
   profileForm !: FormGroup;
   submitted = false;
 
@@ -22,7 +24,7 @@ export class InputInfoComponent implements OnInit {
   id: string;
   
   constructor( private fb: FormBuilder, private customValidator : CustomvalidationService, 
-    private UserApiService : UserApiService, private route : ActivatedRoute) {
+    private UserApiService : UserApiService, private route : ActivatedRoute, private router : Router) {
     this.loadForm(null)
     this.getById();
     this.routeSub = Subscription.EMPTY;
@@ -42,14 +44,14 @@ export class InputInfoComponent implements OnInit {
 
   loadForm(res: any){
     this.profileForm = this.fb.group({
-      name: [!this.id ? '' : res[0].name, Validators.required],
-      email: [!this.id ? '' : res[0].email, [Validators.required, Validators.email]],
-      tel: [!this.id ? '' : res[0].tel, Validators.required],
-      cpf: [!this.id ? '' : res[0].cpf, Validators.required],
-      password: [!this.id ? '' : res[0].password, Validators.required],
+      name: [!this.id ? '' : res.name, Validators.required],
+      email: [!this.id ? '' : res.email, [Validators.required, Validators.email]],
+      tel: [!this.id ? '' : res.tel, Validators.required],
+      cpf: [!this.id ? '' : res.cpf, Validators.required],
+      password: [!this.id ? '' : res.password, Validators.required],
       confirmPassword: ['', Validators.required],
-      acess: [!this.id ? '' : res[0].acess, Validators.required],
-      active: [!this.id ? '' : res[0].active, Validators.required]
+      acess: [!this.id ? '' : res.acess, Validators.required],
+      active: [!this.id ? '' : res.active, Validators.required]
     },
     {
       validator: this.customValidator.MatchPassword('password', 'confirmPassword'),
@@ -73,17 +75,29 @@ export class InputInfoComponent implements OnInit {
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params['id'];
       
-      this.UserApiService.getUsersById(this.id).subscribe(res => {
-        this.loadForm(res)
-      });
+      if(this.id){
+        this.UserApiService.getUsersById(this.id).subscribe(res => {
+          if(!res){
+            this.router.navigateByUrl('/**')
+          }else{
+            this.loadForm(res)  
+          }
+        });
+      }
     })
   }
 
+  sendForm(){
+    if(!this.profileForm.valid){
+      this.disableSelect = new FormControl(false)
+    }
+  }
   onSubmit() {
     this.submitted = true;
 
     if(this.profileForm.valid){ 
       this.saveUser()
+      this.router.navigateByUrl('users')
     }
   }
 

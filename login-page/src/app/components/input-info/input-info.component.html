@@ -72,23 +72,22 @@
           <br>
           <mat-form-field class="active-input input" appearance="fill" fxFlex fxFlex.xs fxFlex.gt-xs>
             <mat-label>Ativo</mat-label>
-            <select matNativeControl required formControlName="active">
-              <option value="sim">Sim</option>
-              <option value="não">Não</option>
-            </select>
+            <mat-select matNativeControl required formControlName="active">
+              <mat-option value="sim">Sim</mat-option>
+              <mat-option value="não">Não</mat-option>
+            </mat-select>
             <mat-error class="text-danger" *ngIf="(profileFormControl.active.touched || submitted) && profileFormControl.active.errors?.required">
               Selecione o <strong>Status</strong>
             </mat-error>
           </mat-form-field>
   </div>
-
-  <mat-card-actions>
-      <button mat-stroked-button type="submit" class="submit-btn"><mat-icon>done</mat-icon></button>
-  </mat-card-actions>
-  <mat-card-actions>
-    <button mat-stroked-button type="submit" class="submit-btn"><mat-icon>trash</mat-icon></button>
-  </mat-card-actions>
-
-
+    <mat-card-actions fxLayout="row wrap">
+        <button mat-stroked-button type="submit" fxFlex matNativeControl>
+          <mat-icon>done</mat-icon>
+        </button>
+        <button *ngIf="id" mat-stroked-button (click)="deleteUsers()" [routerLink]="['/users']" fxFlex="50">
+          <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-actions>
   </form>
   

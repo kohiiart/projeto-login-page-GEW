@@ -2,7 +2,15 @@
 @import '@angular/material/prebuilt-themes/pink-bluegrey.css';
 
 html, body { height: 100%; background-color: var(--color-tertiary) !important;}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: var(--color-primary) !important;}
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    color: var(--color-primary) !important;
+    background-image: url(assets/background.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: screen;
+}
 
 :root{
     --color-primary: #eeeeee;

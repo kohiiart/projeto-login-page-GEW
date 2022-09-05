@@ -13,7 +13,7 @@ routes.get('/:id', (req, res) => {
     const {id} = req.params
     connection.query('SELECT * FROM userdata WHERE id = ?', [id], (e, rows, fields)=>{
         if(!e)
-        res.send(rows);
+        res.send(rows[0]);
         else
         console.log(e);
     })

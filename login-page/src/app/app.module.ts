@@ -19,7 +19,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { ListUsersComponent } from './components/list-users/list-users.component';
-import { EditorComponent } from './components/editor/editor.component';
 import { UsersComponent } from './pages/users/users.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AddBtnComponent } from './components/add-btn/add-btn.component';
@@ -27,7 +26,8 @@ import { ViewBtnComponent } from './components/view-btn/view-btn.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { NotFoundComponent } from './components/not-found/not-found.component'
 
 @NgModule({
   declarations: [
@@ -35,11 +35,11 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     InputInfoComponent,
     HeaderComponent,
     ListUsersComponent,
-    EditorComponent,
     UsersComponent,
     LoginComponent,
     AddBtnComponent,
     ViewBtnComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

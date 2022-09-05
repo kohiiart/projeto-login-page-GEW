@@ -9,7 +9,6 @@ button{
 button:hover{
     color: var(--pink-color)!important;
 }
-
 .login-form{
     padding: 0.1rem;
 }
