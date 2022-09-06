@@ -1,0 +1,18 @@
+<div *ngIf="!id"  fxLayoutAlign="center center" fxLayout="column">
+    <div *ngIf="validForm == true else invalidForm">
+        <h1 mat-dialog-title>Registro Salvo com Sucesso!</h1>
+        <button mat-button (click)="save()">Ok!</button>
+    </div>
+    <ng-template #invalidForm>
+        <h1 mat-dialog-title>Registro Inválido</h1>
+        <button mat-button (click)="save()">Ok!</button>
+    </ng-template>
+</div>
+<div *ngIf="id" fxLayoutAlign="center center" fxLayout="column">
+    <h1 mat-dialog-title id="delete">Apagar Registro</h1>
+    <h3 mat-dialog-content>Tem certeza que deseja apagar este registro?</h3>
+    <div mat-dialog-actions>
+      <button mat-button (click)="cancel()">Cancelar</button>
+      <button id="delete" mat-button (click)="delete()">Apagar</button>
+    </div>
+</div>

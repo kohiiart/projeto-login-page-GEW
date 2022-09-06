@@ -21,13 +21,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 import { UsersComponent } from './pages/users/users.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AddBtnComponent } from './components/add-btn/add-btn.component';
 import { ViewBtnComponent } from './components/view-btn/view-btn.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask';
-import { NotFoundComponent } from './components/not-found/not-found.component'
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component'
 
 @NgModule({
   declarations: [
@@ -37,9 +37,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component'
     ListUsersComponent,
     UsersComponent,
     LoginComponent,
-    AddBtnComponent,
     ViewBtnComponent,
     NotFoundComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,7 @@ body {
     --color-secondary: #262626;
     --color-tertiary: #0D0D0D;
     --pink-color: #C2185B;
+    --alert-color: #F44336;
 }
 
 .pointer{
