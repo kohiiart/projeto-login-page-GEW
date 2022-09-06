@@ -31,13 +31,6 @@ export class InputInfoComponent implements OnInit {
     this.id = "";
   }
 
-  confirmEdit(): void {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '50vh',
-      data: ['delete', this.id]
-    });
-  }
-
   save(): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '50vh',

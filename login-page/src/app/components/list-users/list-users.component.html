@@ -44,6 +44,15 @@
             <td mat-cell *matCellDef="let user"> {{user.active}} </td>
           </ng-container>
 
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> Ativo </th>
+            <td mat-cell *matCellDef="let user"> 
+              <button mat-stroked-button (click)="confirmEdit(user.id)" fxFlex="50" color="warn" [routerLink]="['']">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          
           <tr mat-header-row *matHeaderRowDef="userInfo"></tr>
           <tr mat-row  class="pointer row" *matRowDef="let row; columns: userInfo" [routerLink]="['/edit', row.id]"></tr>
         </table>
