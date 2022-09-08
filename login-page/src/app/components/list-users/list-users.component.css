@@ -2,12 +2,30 @@
     margin-top: 10vh;
     background-color: var(--color-secondary);
 }
+
 .row:hover{
     background-color: var(--color-tertiary);
 }
+
 .mat-cell{
     padding: 10px;
 }
+
 h2{
     font-size: 1.5rem;
+}
+
+.mat-row{
+    text-overflow: clip ellipsis;
+    direction: ltr;
+}
+
+td{
+    max-width: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    direction: ltr;
+}
+.delete{
+    transform: scale(0.8);
 }

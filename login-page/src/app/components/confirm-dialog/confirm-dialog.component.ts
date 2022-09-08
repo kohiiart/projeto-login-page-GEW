@@ -11,6 +11,7 @@ import { UserApiService } from 'src/app/services/user-api.service';
 export class ConfirmDialogComponent implements OnInit {
   id: string = '';
   validForm: boolean = false;
+  loading: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
@@ -35,14 +36,15 @@ export class ConfirmDialogComponent implements OnInit {
 
   save(){
     if(this.validForm == true){
-      console.log('VALID FORM');
       this.router.navigateByUrl('/users');
     }
     this.dialogRef.close();
   }
   delete(){
-    this.UserApiService.deleteUsers(this.id).subscribe((res => {}));
-    this.router.navigateByUrl('/users');
-    this.dialogRef.close();
+    this.loading = true;
+    this.UserApiService.deleteUsers(this.id).subscribe((res => {
+      this.loading = false; 
+      this.dialogRef.close();
+    }));
   }
 }

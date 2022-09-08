@@ -8,11 +8,17 @@
         <button mat-button (click)="save()">Ok!</button>
     </ng-template>
 </div>
+
 <div *ngIf="id" fxLayoutAlign="center center" fxLayout="column">
-    <h1 mat-dialog-title id="delete">Apagar Registro</h1>
-    <h3 mat-dialog-content>Tem certeza que deseja apagar este registro?</h3>
-    <div mat-dialog-actions>
-      <button mat-button (click)="cancel()">Cancelar</button>
-      <button id="delete" mat-button (click)="delete()">Apagar</button>
+    <div *ngIf="!loading else loadingSpin">
+        <h1 mat-dialog-title id="delete">Apagar Registro</h1>
+        <h3 mat-dialog-content>Tem certeza que deseja apagar este registro?</h3>
+        <div mat-dialog-actions>
+          <button mat-button (click)="cancel()">Cancelar</button>
+          <button id="delete" mat-button (click)="delete()">Apagar</button>
+        </div>
     </div>
+    <ng-template #loadingSpin>
+        <mat-spinner></mat-spinner>
+    </ng-template>
 </div>

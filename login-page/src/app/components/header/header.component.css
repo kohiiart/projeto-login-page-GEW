@@ -10,8 +10,13 @@
     height: 2rem;
 }
 
-.mat-icon:hover{
-    color: var(--pink-color);
+.mat-fab{
+    background-color: var(--pink-color);
+    color: #fff;
+}
+
+.mat-fab:hover{
+    background-color: #a6114d;
 }
 
 ul{

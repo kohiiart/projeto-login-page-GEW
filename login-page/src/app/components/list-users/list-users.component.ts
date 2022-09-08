@@ -43,5 +43,9 @@ export class ListUsersComponent implements OnInit {
       width: '50vh',
       data: ['delete', sendId]
     });
+
+    dialogRef.afterClosed().subscribe(()=>{
+      this.listUsers();
+    })
   }
 }

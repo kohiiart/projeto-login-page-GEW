@@ -24,10 +24,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { ViewBtnComponent } from './components/view-btn/view-btn.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component'
+
 
 @NgModule({
   declarations: [
@@ -59,7 +61,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     HttpClientModule,
     NgxMaskModule.forRoot(),
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
