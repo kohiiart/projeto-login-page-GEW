@@ -1,6 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="center center" >
-    <mat-card class="card" fxFlex="80" fxLayout="column">
-        <h2 fxLayoutAlign="center center">Lista de Usuários Cadastrados</h2>
+    <mat-card class="card" fxFlex="80">
+      <div *ngIf="usersLister.length" fxLayout="column">  
+      <h2 fxLayoutAlign="center center">Lista de Usuários Cadastrados</h2>
         
         <table mat-table [dataSource]="usersLister" class="mat-elevation-z8" fxFlex="100">
         
@@ -56,6 +57,13 @@
           <tr mat-header-row *matHeaderRowDef="userInfo"></tr>
           <tr mat-row  class="pointer row" *matRowDef="let row; columns: userInfo" [routerLink]="['/edit', row.id]" ></tr>
         </table>
-
+      </div>
+      <div *ngIf="usersLister.length == 0" fxLayoutAlign="space-around center">
+        <img src="../../../assets/Headache-bro.svg" fxFlex="45">
+        <div fxLayout="column">
+          <h1 id="error-title" >Não há Usuários<br><span>Cadastrados!</span></h1>
+          <button mat-stroked-button fxLayoutAlign="space-around center" [routerLink]="['/sign']" class="error">Adicionar Usuários<mat-icon>person_add</mat-icon></button>
+        </div>
+      </div>
     </mat-card>
 </div>

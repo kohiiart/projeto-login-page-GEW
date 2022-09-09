@@ -15,6 +15,7 @@ export class ListUsersComponent implements OnInit {
   usersLister: User[]
   snapshot: any;
   id: string;
+  resValidate: boolean = false;
   userInfo: string[] = ['id','name', 'email', 'password', 'cpf', 'tel', 'acess', 'active', 'delete'];
 
   constructor( private userApiService: UserApiService, 
@@ -33,6 +34,9 @@ export class ListUsersComponent implements OnInit {
     this.userApiService.getUsers().subscribe(
       (res: any)=> {
         this.usersLister = <any>res;
+        if(res){
+          this.resValidate= true
+        }
       },
       (err: any) => console.log(err)
       )
