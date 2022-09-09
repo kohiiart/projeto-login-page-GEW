@@ -7,7 +7,7 @@ button{
     margin-top: 1rem;
 }
 button:hover{
-    color: var(--pink-color)!important;
+    background-color: #961348;
 }
 .login-form{
     padding: 0.1rem;

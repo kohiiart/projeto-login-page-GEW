@@ -31,8 +31,12 @@ td{
     transform: scale(0.8);
 }
 
+.error{
+    border-radius: 2rem;
+}
+
 .error:hover{
-    color: var(--pink-color);
+    background-color: #961348;
 }
 
 #error-title{
@@ -46,4 +50,25 @@ td{
     font-weight: bold;
     color: #fff;
     letter-spacing: 0.2rem;
+}
+
+.search{
+    margin-bottom: 1rem;
+    outline: none;
+    background-color: inherit;
+    border: 1px solid var(--pink-color);
+    border-radius: 1rem;
+    color: #fff;
+    padding: 0.5rem;
+}
+
+#search-btn{
+    margin-bottom: 1rem;
+    transform: scale(0.6);
+}
+
+h2 span{
+    font-size: 2.05rem;
+    font-weight: bold;
+    color: var(--pink-color);
 }

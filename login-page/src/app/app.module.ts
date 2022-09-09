@@ -62,7 +62,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     NgxMaskModule.forRoot(),
     MatTableModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

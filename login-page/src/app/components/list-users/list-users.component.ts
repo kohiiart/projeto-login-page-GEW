@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserApiService, User } from 'src/app/services/user-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import {MatPaginator} from '@angular/material/paginator';
-import { UsersComponent } from 'src/app/pages/users/users.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-list-users',
@@ -12,8 +11,10 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./list-users.component.css']
 })
 export class ListUsersComponent implements OnInit {
-  usersLister: User[]
+  usersLister: User[] = []
   snapshot: any;
+
+  src: User[] = []
   id: string;
   resValidate: boolean = false;
   userInfo: string[] = ['id','name', 'email', 'password', 'cpf', 'tel', 'acess', 'active', 'delete'];
@@ -21,7 +22,9 @@ export class ListUsersComponent implements OnInit {
   constructor( private userApiService: UserApiService, 
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    private ref: ElementRef )
+    {
     this.usersLister = [];
     this.id=''
    }
@@ -34,6 +37,7 @@ export class ListUsersComponent implements OnInit {
     this.userApiService.getUsers().subscribe(
       (res: any)=> {
         this.usersLister = <any>res;
+        this.src = this.usersLister
         if(res){
           this.resValidate= true
         }
@@ -51,5 +55,28 @@ export class ListUsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(()=>{
       this.listUsers();
     })
+  }
+
+  searchUsers() {
+    const input =  this.ref.nativeElement.querySelector('input')
+    if (input.value.length === Number(0)) {
+      this.src = this.usersLister;
+
+    }else{
+      let table: User[] = []
+
+      for (let i = 0; i < this.usersLister.length; i++){
+
+        const row = this.usersLister[i]
+        const rowValue = input.value.toLowerCase()
+        const rowName = row.name?.toLowerCase()
+        if (rowName?.includes(rowValue)){
+          table.push(row)
+        }
+
+      }
+      console.log(table, table)
+      this.src = table;
+    }
   }
 }
