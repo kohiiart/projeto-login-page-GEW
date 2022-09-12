@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ElementRef } from '@angular/core';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-list-users',
@@ -34,11 +35,16 @@ export class ListUsersComponent implements OnInit {
   }
 
   listUsers() {
+    const dialogRef = this.dialog.open(LoadingComponent, {
+      panelClass: 'loading-dialog'
+    });
+
     this.userApiService.getUsers().subscribe(
       (res: any)=> {
         this.usersLister = <any>res;
         this.src = this.usersLister
         if(res){
+          dialogRef.close()
           this.resValidate= true
         }
       },

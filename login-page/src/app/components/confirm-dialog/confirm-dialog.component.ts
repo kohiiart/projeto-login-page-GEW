@@ -35,7 +35,9 @@ export class ConfirmDialogComponent implements OnInit {
   }
 
   save(){
+    this.loading = true;
     if(this.validForm == true){
+      this.loading = false;
       this.router.navigateByUrl('/users');
     }
     this.dialogRef.close();

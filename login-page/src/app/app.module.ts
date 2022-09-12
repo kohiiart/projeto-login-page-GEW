@@ -28,7 +28,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component'
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { LoadingComponent } from './components/loading/loading.component'
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     ViewBtnComponent,
     NotFoundComponent,
     ConfirmDialogComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

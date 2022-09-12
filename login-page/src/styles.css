@@ -23,3 +23,7 @@ body {
 .pointer{
     cursor: pointer;
 }
+
+.loading-dialog .mat-dialog-container{
+    background-color: inherit ;
+}
